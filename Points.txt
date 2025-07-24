@@ -1,0 +1,8 @@
+Please create a REST API project using best practices with following specifications
+a) Database is SQL Server. 
+b) Use Dapper. 
+c) Global Exception Handling
+d) Serilog for logging
+e) Unit testing
+f) ASP.Net Core 8.
+g) Swagger.
