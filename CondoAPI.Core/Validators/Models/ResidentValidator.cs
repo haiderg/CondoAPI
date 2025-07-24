@@ -1,7 +1,7 @@
 using CondoAPI.Core.Models;
 using FluentValidation;
 
-namespace CondoAPI.Core.Validators
+namespace CondoAPI.Core.Validators.Models
 {
     public class ResidentValidator : AbstractValidator<Resident>
     {

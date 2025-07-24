@@ -1,6 +1,6 @@
 using CondoAPI.Core.Interfaces;
 using CondoAPI.Core.Models;
-using CondoAPI.Core.Validators;
+using CondoAPI.Core.Validators.Models;
 using CondoAPI.Infrastructure.Data;
 using CondoAPI.Infrastructure.Repositories;
 using FluentValidation;
