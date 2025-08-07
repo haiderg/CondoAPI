@@ -2,7 +2,7 @@ using CondoAPI.Core.Interfaces;
 using CondoAPI.Core.Models;
 using CondoAPI.Infrastructure.Data;
 using Dapper;
-using System.Data;
+
 
 namespace CondoAPI.Infrastructure.Repositories
 {

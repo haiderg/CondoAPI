@@ -1,8 +1,11 @@
 using CondoAPI.Core.Interfaces;
 using CondoAPI.Core.Models;
 using CondoAPI.Core.Validators.Models;
+using CondoAPI.Core.DTOs.Requests;
 using CondoAPI.Infrastructure.Data;
 using CondoAPI.Infrastructure.Repositories;
+using CondoAPI.Infrastructure.Services;
+using CondoAPI.Core.Validators.DTOs;
 using FluentValidation;
 
 namespace CondoAPI.API.Extensions
@@ -17,9 +20,17 @@ namespace CondoAPI.API.Extensions
             return services;
         }
 
+        public static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            services.AddScoped<IAvailableResortsService, AvailableResortsService>();
+            
+            return services;
+        }
+
         public static IServiceCollection AddValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<Resident>, ResidentValidator>();
+            services.AddScoped<IValidator<AvailableResortsCountriesRequest>, AvailableResortsCountriesRequestValidator>();
             
             return services;
         }

@@ -8,17 +8,17 @@ namespace CondoAPI.API.Controllers
     [Route("api/[controller]")]
     public class AvailableResortsController : ControllerBase
     {
-        private readonly IAvailableResortsLocations _repository;
+        private readonly IAvailableResortsService _service;
 
-        public AvailableResortsController(IAvailableResortsLocations repository)
+        public AvailableResortsController(IAvailableResortsService service)
         {
-            _repository = repository;
+            _service = service;
         }
 
         [HttpPost("countries")]
         public async Task<IActionResult> GetAvailableCountries([FromBody] AvailableResortsCountriesRequest request)
         {
-            var countries = await _repository.GetAvailableResortsCountriesByFiltersAsync(request);
+            var countries = await _service.GetAvailableResortsCountriesAsync(request);
             return Ok(countries);
         }
     }

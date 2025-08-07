@@ -1,20 +1,22 @@
 using CondoAPI.Core.Interfaces;
-using CondoAPI.Core.Models;
 using CondoAPI.Core.DTOs.Requests;
 using CondoAPI.Core.DTOs.Responses;
 using CondoAPI.Infrastructure.Data;
 using Dapper;
 using System.Data;
 
-namespace CondoAPI.Infrastructure.Repositories
+namespace CondoAPI.Infrastructure.Services
 {
-    public class AvailableResortsLocationsRepository : BaseRepository<AvailableResortsLocations>, IAvailableResortsLocations
+    public class AvailableResortsService : IAvailableResortsService
     {
-        public AvailableResortsLocationsRepository(DbConnectionFactory connectionFactory) : base(connectionFactory)
+        private readonly IDbConnectionFactory _connectionFactory;
+
+        public AvailableResortsService(IDbConnectionFactory connectionFactory)
         {
+            _connectionFactory = connectionFactory;
         }
 
-        public async Task<IEnumerable<AvailableResortsCountriesResponse>> GetAvailableResortsCountriesByFiltersAsync(AvailableResortsCountriesRequest request)
+        public async Task<IEnumerable<AvailableResortsCountriesResponse>> GetAvailableResortsCountriesAsync(AvailableResortsCountriesRequest request)
         {
             using var connection = _connectionFactory.CreateConnection();
             

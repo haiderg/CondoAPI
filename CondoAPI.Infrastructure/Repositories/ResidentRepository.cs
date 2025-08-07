@@ -11,6 +11,7 @@ namespace CondoAPI.Infrastructure.Repositories
 
         public ResidentRepository(IDbConnectionFactory connectionFactory) : base(connectionFactory)
         {
+
         }
 
         public async Task<IEnumerable<Resident>> GetActiveResidentsAsync()

@@ -25,7 +25,9 @@ builder.Services.AddSwaggerGen(c =>
 // Register custom services
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddRepositories();
+builder.Services.AddServices();
 builder.Services.AddValidators();
+
 
 var app = builder.Build();
 
