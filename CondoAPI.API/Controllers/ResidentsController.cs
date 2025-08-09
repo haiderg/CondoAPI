@@ -14,10 +14,7 @@ namespace CondoAPI.API.Controllers
         private readonly IValidator<Resident> _validator;
         private readonly ILogger<ResidentsController> _logger;
 
-        public ResidentsController(
-            IResidentRepository residentRepository,
-            IValidator<Resident> validator,
-            ILogger<ResidentsController> logger)
+        public ResidentsController(IResidentRepository residentRepository,IValidator<Resident> validator,ILogger<ResidentsController> logger)
         {
             _residentRepository = residentRepository;
             _validator = validator;

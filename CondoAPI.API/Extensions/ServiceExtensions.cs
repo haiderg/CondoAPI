@@ -16,13 +16,15 @@ namespace CondoAPI.API.Extensions
         {
             services.AddScoped<IDbConnectionFactory, SqlConnectionFactory>();
             services.AddScoped<IResidentRepository, ResidentRepository>();
-            
+            services.AddScoped<IAgentRepository, AgentRepository>();
+
             return services;
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IAvailableResortsService, AvailableResortsService>();
+          
+            services.AddScoped<IAgentService, AgentService>();
             
             return services;
         }

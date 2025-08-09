@@ -1,22 +1,43 @@
-﻿using CondoAPI.Core.Models;
-using CondoAPI.Infrastructure._Data;
+﻿using CondoAPI.Core.Interfaces;
+using CondoAPI.Core.Models;
+
 using CondoAPI.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 
-namespace CondoAPI.Infrastructure._Repositories
+
+namespace CondoAPI.Infrastructure.Repositories
 {
-    public class AgentRepository : _BaseRepository<Agent>
+    public class AgentRepository : BaseRepository<Agent>, IAgentRepository
     {
-        public AgentRepository(_IDbConnectionFactory connectionFactory) : base(connectionFactory)
+        private readonly IDbConnectionFactory _connectionFactory;
+        public AgentRepository(IDbConnectionFactory connectionFactory) : base(connectionFactory)
         {
-
+            _connectionFactory = connectionFactory;
         }
 
         protected override string TableName => "Agent";
+
+        public Task<bool> DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Agent>> GetAllAgentsAsync()
+        {
+            using var connection = _connectionFactory.CreateConnection();
+            var query = $"SELECT * FROM {TableName}";
+            return await connection.QueryAsync<Agent>(query);
+        }
+
+        public Task<Agent?> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateAsync(Agent entity)
+        {
+            throw new NotImplementedException();
+        }
 
         protected override string GetColumns()
         {
