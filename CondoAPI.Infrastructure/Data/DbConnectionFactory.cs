@@ -1,27 +1,30 @@
 using CondoAPI.Core.Models;
-using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System.Data;
 
 namespace CondoAPI.Infrastructure.Data
 {
-    public interface IDbConnectionFactory
-    {
-        IDbConnection CreateConnection();
-    }
-
-    public class SqlConnectionFactory : IDbConnectionFactory
+    public class DbConnectionFactory : IDbConnectionFactory
     {
         private readonly DatabaseSettings _settings;
 
-        public SqlConnectionFactory(IOptions<DatabaseSettings> settings)
+        public DbConnectionFactory(IOptions<DatabaseSettings> settings)
         {
             _settings = settings.Value;
         }
 
-        public IDbConnection CreateConnection()
+        public DbContextOptions<T> CreateDbContextOptions<T>() where T : DbContext
         {
-            return new SqlConnection(_settings.ConnectionString);
+            var builder = new DbContextOptionsBuilder<T>();
+            
+            // For now, only SQL Server is supported
+            // To add other providers, install the respective NuGet packages:
+            // - MySQL: Pomelo.EntityFrameworkCore.MySql
+            // - PostgreSQL: Npgsql.EntityFrameworkCore.PostgreSQL
+            // - SQLite: Microsoft.EntityFrameworkCore.Sqlite
+            
+            builder.UseSqlServer(_settings.ConnectionString);
+            return builder.Options;
         }
     }
 }

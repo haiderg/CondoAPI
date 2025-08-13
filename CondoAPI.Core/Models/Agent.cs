@@ -1,7 +1,7 @@
 ﻿
 namespace CondoAPI.Core.Models
 {
-    public class Agent : BaseEntity
+    public class Agent 
     {
         public int AgentID { get; set; }
 
@@ -11,7 +11,7 @@ namespace CondoAPI.Core.Models
 
         public string? AgentCity { get; set; }
 
-        public string? AgentStoreProvince { get; set; }
+        public string? AgentStateProvice { get; set; }
 
         public string? AgentCountry { get; set; }
 

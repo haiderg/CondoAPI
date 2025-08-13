@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Register custom services
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
-builder.Services.AddRepositories();
+builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddServices();
 builder.Services.AddValidators();
 
