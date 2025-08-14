@@ -23,11 +23,11 @@ namespace CondoAPI.Infrastructure.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public virtual async Task<int> CreateAsync(T entity)
+        public virtual async Task<bool> CreateAsync(T entity)
         {
             _context.Set<T>().Add(entity);
-            await _context.SaveChangesAsync();
-            return 1; // Return success indicator
+            var result = await _context.SaveChangesAsync();
+            return result > 0;
         }
 
         public virtual async Task<bool> UpdateAsync(T entity)
