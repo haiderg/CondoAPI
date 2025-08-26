@@ -69,12 +69,8 @@ dotnet test
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET    | /api/residents | Get all residents |
-| GET    | /api/residents/active | Get active residents |
-| GET    | /api/residents/{id} | Get resident by ID |
-| POST   | /api/residents | Create a new resident |
-| PUT    | /api/residents/{id} | Update a resident |
-| DELETE | /api/residents/{id} | Delete a resident |
+| GET    | /api/agents | Get all agents |
+
 
 ## License
 
